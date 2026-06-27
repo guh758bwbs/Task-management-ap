@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>タスク管理アプリ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <div class="header">
+      <h1>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="5" width="6" height="6" rx="1"/><path d="m3 17 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/>
+        </svg>
+        タスク管理
+      </h1>
+      <span class="header-date" id="date-label"></span>
+    </div>
+  
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-label">全タスク</div>
+        <div class="stat-val" id="stat-total">0</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">完了</div>
+        <div class="stat-val green" id="stat-done">0</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">残り</div>
+        <div class="stat-val amber" id="stat-remain">0</div>
+      </div>
+    </div>
+  
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress"></div>
+    </div>
+  
+    <div class="input-row">
+      <input type="text" id="task-input" placeholder="新しいタスクを入力..." maxlength="60">
+      <select id="priority-select">
+        <option value="medium">普通</option>
+        <option value="high">高</option>
+        <option value="low">低</option>
+      </select>
+      <button type="button" class="add-btn" onclick="addTask()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        追加
+      </button>
+    </div>
+  
+    <div class="filters">
+      <button type="button" class="filter-btn active" onclick="setFilter('all', this)">すべて</button>
+      <button type="button" class="filter-btn" onclick="setFilter('active', this)">未完了</button>
+      <button type="button" class="filter-btn" onclick="setFilter('done', this)">完了済み</button>
+      <button type="button" class="filter-btn" onclick="setFilter('high', this)">優先度: 高</button>
+    </div>
+  
+    <div class="tasks" id="task-list"></div>
+  </div>
+  
+  <script src="js/main.js"></script>
+</body>
+</html>
